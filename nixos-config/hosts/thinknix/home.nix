@@ -32,7 +32,17 @@
   };
 
   services.ssh-agent.enable = true;
-  programs.ssh.addKeysToAgent = "ask";
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "ask";
+    matchBlocks = {
+      "github.com github" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "/home/joel/.ssh/github_id_ed25519";
+      };
+    };
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
