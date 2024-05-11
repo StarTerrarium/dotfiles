@@ -96,9 +96,6 @@
     };
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Enable the nix helper nh
   programs.nh = {
     enable = true;

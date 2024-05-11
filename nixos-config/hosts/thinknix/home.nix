@@ -15,6 +15,8 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  programs.firefox.enable = true;
+
   programs.git = {
     enable = true;
     userEmail = "github@sl.seltox.me";
@@ -28,6 +30,9 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  services.ssh-agent.enable = true;
+  programs.ssh.addKeysToAgent = "ask";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
