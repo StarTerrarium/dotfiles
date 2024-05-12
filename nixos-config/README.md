@@ -29,6 +29,8 @@ Unfortunately not everything is (or can?) be managed entirely by the nixos confi
 - Retrieve SSH keys from some secrets manager and place in `~/.ssh`
   - Remember to change their permissions, eg `chmod 400 ~/.ssh/my_ssh_key`
   - Check the `config` for the expected name of any keys used
+  - Update the origin url of `~/.dotfiles` repo after setting up SSH, so we can actually push
+    `git remote set-url git@github.com:StarTerrarium/dotfiles.git`
 - Install any Firefox addons desired
   - Logging into your Firefox account will sync addons
   - See [Yomichan Setup Tutorial](https://learnjapanese.moe/yomichan/) to find dictionaries for Yomitan
