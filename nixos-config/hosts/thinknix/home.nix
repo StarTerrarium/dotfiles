@@ -1,19 +1,17 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [
+    ../../homeManagerModules/ssh-config.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "joel";
   home.homeDirectory = "/home/joel";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  ssh.enable = true;
 
   programs.firefox.enable = true;
 
@@ -31,18 +29,7 @@
     vimAlias = true;
   };
 
-  services.ssh-agent.enable = true;
-  programs.ssh = {
-    enable = true;
-    addKeysToAgent = "ask";
-    matchBlocks = {
-      "github.com github" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "/home/joel/.ssh/github_id_ed25519";
-      };
-    };
-  };
+
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -102,4 +89,13 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
 }
